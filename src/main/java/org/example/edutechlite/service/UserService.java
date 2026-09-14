@@ -2,6 +2,7 @@ package org.example.edutechlite.service;
 
 import org.example.edutechlite.entity.User;
 import org.example.edutechlite.repository.UserRepository;
+import org.example.edutechlite.security.JwtTokenProvider; // 1. ایمپورت ابزار توکن
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,15 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider; // 2. تعریف متغیر
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    // 3. اضافه کردن به سازنده (Constructor Injection)
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder,
+                       JwtTokenProvider jwtTokenProvider) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtTokenProvider = jwtTokenProvider;
     }
 
     public User register(User user, String rawPassword) {
@@ -33,7 +39,7 @@ public class UserService {
             throw new RuntimeException("wrong password ?!");
         }
 
-
-        return "Login successful! (Token can be generated here)";
+        // 4. تولید و برگرداندن توکن واقعی با استفاده از متدی که قبلاً نوشته بودی
+        return jwtTokenProvider.generateTokenFromUsername(user.getUsername());
     }
 }

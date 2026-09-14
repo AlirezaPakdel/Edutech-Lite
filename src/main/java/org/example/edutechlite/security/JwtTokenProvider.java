@@ -14,9 +14,8 @@ public class JwtTokenProvider {
 
     private final String SECRET_KEY_STRING = "mysecretkeyedutechlitestudentprojectsecretkey1234567890";
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY_STRING.getBytes());
-    private final long EXPIRATION_TIME = 86400000; // اعتبار ۲۴ ساعت
+    private final long EXPIRATION_TIME = 86400000;
 
-    // تولید توکن از روی اطلاعات احراز هویت
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return Jwts.builder()
@@ -27,7 +26,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // تولید توکن مستقیماً با نام کاربری
     public String generateTokenFromUsername(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -37,7 +35,7 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // استخراج نام کاربری از توکن
+
     public String getUsernameFromToken(String token) {
         return Jwts.parser()
                 .verifyWith(key)
@@ -47,7 +45,7 @@ public class JwtTokenProvider {
                 .getSubject();
     }
 
-    // اعتبارسنجی توکن
+
     public boolean validateToken(String token) {
         try {
             Jwts.parser().verifyWith(key).build().parseSignedClaims(token);

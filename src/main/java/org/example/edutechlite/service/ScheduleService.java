@@ -20,7 +20,6 @@ public class ScheduleService {
         this.userRepository = userRepository;
     }
 
-    // دریافت برنامه کلاس بر اساس نام کلاس و روز هفته (یا فقط نام کلاس)
     public List<Schedule> getScheduleByClass(String className, DayOfWeek dayOfWeek) {
         if (dayOfWeek != null) {
             return scheduleRepository.findByClassNameAndDayOfWeek(className, dayOfWeek);
@@ -28,14 +27,12 @@ public class ScheduleService {
         return scheduleRepository.findByClassName(className);
     }
 
-    // دریافت برنامه درسی یک معلم خاص
     public List<Schedule> getScheduleByTeacher(Long teacherId) {
         User teacher = userRepository.findById(teacherId)
                 .orElseThrow(() -> new RuntimeException("معلم مورد نظر پیدا نشد: " + teacherId));
         return scheduleRepository.findByTeacher(teacher);
     }
 
-    // تخصیص معلم جانشین در صورت غیبت
     public Schedule assignSubstituteTeacher(Long scheduleId, Long substituteTeacherId) {
         Schedule schedule = scheduleRepository.findById(scheduleId)
                 .orElseThrow(() -> new RuntimeException("زنگ برنامه مورد نظر پیدا نشد: " + scheduleId));
