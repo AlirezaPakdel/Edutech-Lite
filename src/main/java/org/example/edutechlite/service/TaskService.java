@@ -16,30 +16,26 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    // متد دریافت همه وظایف برای نمایش در بورد کانبان فرانت‌اند
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
 
-    // متد ایجاد وظیفه جدید با وضعیت پیش‌فرض TODO
     public Task createTask(Task task) {
         task.setStatus(TaskStatus.TODO);
         return taskRepository.save(task);
     }
 
-    // متد تغییر وضعیت (برای وقتی که کاربر کارت را در بورد کانبان جابه‌جا می‌کند)
     public Task updateTaskStatus(Long id, TaskStatus newStatus) {
         Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("تسک با این شناسه پیدا نشد: " + id));
+                .orElseThrow(() -> new RuntimeException("task with this id is not exist : " + id));
 
         task.setStatus(newStatus);
         return taskRepository.save(task);
     }
 
-    // متد حذف وظیفه از بورد
     public void deleteTask(Long id) {
         if (!taskRepository.existsById(id)) {
-            throw new RuntimeException("تسک مورد نظر برای حذف پیدا نشد: " + id);
+            throw new RuntimeException("task not found with this id : " + id);
         }
         taskRepository.deleteById(id);
     }
