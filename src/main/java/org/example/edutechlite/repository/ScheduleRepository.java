@@ -11,4 +11,5 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     List<Schedule> findByClassName(String className);
     List<Schedule> findByClassNameAndDayOfWeek(String className, DayOfWeek dayOfWeek);
     List<Schedule> findByTeacher(User teacher);
+    long countByIsSubstituteTrue();
 }
