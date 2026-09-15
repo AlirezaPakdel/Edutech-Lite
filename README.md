@@ -1,4 +1,4 @@
-# ⚡ EdutechLite | سیستم مدیریت آموزشی
+# ⚡ EdutechLite | School Management System
 
 <div align="center">
 
@@ -12,63 +12,63 @@
 
 ---
 
-## 📖 درباره پروژه
-پروژه **EdutechLite** یک سیستم مدیریت آموزشی سبک، امن و مدرن است که با معماری جداگانه (Decoupled Architecture) توسعه داده شده است. این سیستم با الهام از المان‌های بصری و تم جذاب **هوفلپاف (Hufflepuff)** در طراحی رابط کاربری و بهره‌گیری از مکانیزم‌های امنیتی پیشرفته، بستر مناسبی برای مدیریت امور آموزشی فراهم می‌کند.
+## 📖 About The Project
+**EdutechLite** is a modern, lightweight, and secure school management system built using a decoupled architecture. Inspired by the warm and striking visual theme of **Hufflepuff**, the user interface blends aesthetic appeal with robust backend security to deliver a seamless educational management experience.
 
 ---
 
-## 🛠 تکنولوژی‌های استفاده شده
+## 🛠 Tech Stack
 
-### بخش بک‌اند (Backend):
-* **Java 17+ / Spring Boot:** هسته اصلی پردازش و منطق برنامه
-* **Spring Security:** مدیریت قدرتمند لایه امنیت و دسترسی‌ها
-* **JWT (JSON Web Token):** احراز هویت بدون حالت (Stateless) با امضای امن
-* **Spring Data JPA / Hibernate:** ارتباط با پایگاه داده و مدیریت ORM
-* **MySQL:** پایگاه داده رابطه ای
+### Backend:
+* **Java 17+ / Spring Boot:** Core business logic and REST APIs
+* **Spring Security:** Advanced authorization and security management
+* **JWT (JSON Web Token):** Stateless authentication mechanism
+* **Spring Data JPA / Hibernate:** ORM and database management
+* **MySQL:** Relational database
 
-### بخش فرانت‌اند (Frontend):
-* **React.js:** کتابخانه پویای جاوا اسکریپت
-* **React Router DOM:** مدیریت مسیرها و ناوبری صفحات
-* **Tailwind CSS:** طراحی رابط کاربری مدرن، ریسپانسیو و سفارشی‌سازی شده
-
----
-
-## 📂 ساختار امنیت و احراز هویت
-پروژه از سیستم احراز هویت مبتنی بر توکن بهره می‌برد که شامل کامپوننت‌های کلیدی زیر است:
-* `CustomUserDetailsService`: بارگذاری اطلاعات کاربران از پایگاه داده
-* `JwtAuthenticationFilter`: فیلتر بررسی و اعتبارسنچی توکن در هر درخواست
-* `JwtTokenProvider`: ابزار تولید، امضا و رمزگشایی توکن‌های JWT
-* `SecurityConfig`: فایل جامع تنظیمات امنیتی و مدیریت مسیرهای مجاز/محدود
+### Frontend:
+* **React.js:** Dynamic JavaScript library for user interfaces
+* **React Router DOM:** Single-page application routing and navigation
+* **Tailwind CSS:** Modern, responsive, and custom-styled utility-first CSS framework
 
 ---
 
-## 🚀 راه اندازی و اجرا
+## 📂 Security & Authentication Architecture
+The project utilizes a token-based stateless authentication flow, powered by the following key components:
+* `CustomUserDetailsService`: Loads user-specific data from the database
+* `JwtAuthenticationFilter`: Intercepts and validates JWT tokens for incoming requests
+* `JwtTokenProvider`: Handles token generation, signing, and claims validation
+* `SecurityConfig`: Comprehensive security rules and endpoint protection mapping
 
-### ۱. کلون کردن مخزن
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/AlirezaPakdel/Edutech-Lite.git
 cd Edutech-Lite
 ```
 
-### ۲. اجرای بخش بک‌اند
-* پروژه بک‌اند را در محیط برنامه‌نویسی (مثل IntelliJ IDEA) باز کنید.
-* تنظیمات اتصال به دیتابیس MySQL را در فایل `application.properties` تنظیم کنید.
-* پروژه اسپرینگ‌بوت را اجرا کنید.
+### 2. Run the Backend
+* Open the backend project in your preferred IDE (e.g., IntelliJ IDEA).
+* Configure your MySQL database credentials in `application.properties`.
+* Run the Spring Boot application.
 
-### ۳. اجرای بخش فرانت‌اند
+### 3. Run the Frontend
 ```bash
-cd front/freekala-frontend (یا مسیر پوشه فرانت‌اند)
+cd front/freekala-frontend (or your frontend directory path)
 npm install
 npm run dev
 ```
 
 ---
 
-## 👤 نویسنده
-**علیرضا پاکدل**
+## 👤 Author
+**Alireza Pakdel**
 * GitHub: [@AlirezaPakdel](https://github.com/AlirezaPakdel)
 
 ---
 <div align="center">
-ساخته شده با ⚡ و علاقه برای مدیریت هوشمند آموزش.
+Built with ⚡ and passion for smart educational management.
 </div>
